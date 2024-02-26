@@ -27,11 +27,9 @@ function updateClock() {
   const hours = now.getHours()
   const minutes = now.getMinutes()
   const seconds = now.getSeconds()
-  now.setHours(0, 0, 0, 0)
   clock.textContent = hours + ':' + minutes + ':' + seconds;
-  
 }
 
-updateClock();
+
 startClock();
-stopClock()
+stopClock();
