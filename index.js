@@ -6,6 +6,7 @@ function startClock() {
   startButton.addEventListener('click', function () {
     if (!isRanning) {
       timerId = setInterval(updateClock, 1000);
+      isRanning = true;
     }
   });
 }
@@ -13,21 +14,22 @@ function startClock() {
 function stopClock() {
   const stopButton = document.getElementById('stop');
   stopButton.addEventListener('click', function () {
-    isRanning = false;
-    clearInterval(timerId); // останавливаем таймер
+    if(isRanning){
+      clearInterval(timerId); 
+      isRanning = false;
+    }
   });
 }
 
-
-
 function updateClock() {
   const clock = document.getElementById('clock');
-  // НУЖНО ПОГУГЛИТЬ ЧТО ТАКОЕ new Date()
   const now = new Date();
   const hours = now.getHours()
   const minutes = now.getMinutes()
   const seconds = now.getSeconds()
+  now.setHours(0, 0, 0, 0)
   clock.textContent = hours + ':' + minutes + ':' + seconds;
+  
 }
 
 updateClock();
